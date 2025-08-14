@@ -64,29 +64,29 @@ func ParseLog(logdata io.Reader) ([]*LogMessages, error) {
 
 		// From, To, Status の情報を必要に応じて logMessage に設定
 		if logMessage.From == "" {
-			from, from_exsists := msgContent.Params["from"]
+			from, fromExsists := msgContent.Params["from"]
 
-			if from_exsists {
+			if fromExsists {
 				logMessage.From = from
 			}
 		}
 
 		if logMessage.To == "" {
-			to, to_exists := msgContent.Params["to"]
-			org_to, org_to_exists := msgContent.Params["orig_to"]
+			to, toExists := msgContent.Params["to"]
+			origTo, origToExists := msgContent.Params["orig_to"]
 
-			if org_to_exists {
-				logMessage.To = org_to
+			if origToExists {
+				logMessage.To = origTo
 
-			} else if to_exists {
+			} else if toExists {
 				logMessage.To = to
 			}
 		}
 
 		if logMessage.Status == "" {
-			status, status_exists := msgContent.Params["status"]
+			status, statusExists := msgContent.Params["status"]
 
-			if status_exists {
+			if statusExists {
 				logMessage.Status = status
 			}
 		}
