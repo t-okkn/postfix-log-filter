@@ -134,7 +134,7 @@ func parseLine(line string) (string, MessageContent) {
 		mc.Params["warning"] = strings.Join(elements[4:], " ")
 	}
 
-	comment_start := -1
+	commentStart := -1
 	relationship := -1
 
 	// パラメータを解析
@@ -150,7 +150,7 @@ func parseLine(line string) (string, MessageContent) {
 			}
 
 		} else if strings.HasPrefix(elements[i], "(") {
-			comment_start = i
+			commentStart = i
 			break
 
 		} else if strings.Contains(elements[i], "notification:") {
@@ -159,8 +159,8 @@ func parseLine(line string) (string, MessageContent) {
 		}
 	}
 
-	if comment_start != -1 {
-		comment := strings.Join(elements[comment_start:], " ")
+	if commentStart != -1 {
+		comment := strings.Join(elements[commentStart:], " ")
 		mc.Params["comment"] = strings.TrimLeft(comment, "(")[:len(comment)-2]
 	}
 
