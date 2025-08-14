@@ -32,7 +32,7 @@ func readFromFile(filePath string) ([]*LogMessages, error) {
 	}
 
 	defer file.Close()
-	var data = []*LogMessages{}
+	data := []*LogMessages{}
 
 	// gzip圧縮されたファイルかどうかを確認
 	if strings.HasSuffix(filePath, ".gz") {
