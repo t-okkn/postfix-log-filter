@@ -11,8 +11,9 @@ import (
 )
 
 var (
-	Version  string
-	Revision string
+	PackageName string
+	Version     string
+	Revision    string
 )
 
 // main 関数は、コマンドライン引数を解析し、ログファイルの読み込みと結果の出力を行います
@@ -29,7 +30,7 @@ func main() {
 
 	// versionフラグが指定された場合、バージョン情報を表示して終了
 	if *version {
-		fmt.Println(Version, Revision)
+		fmt.Println(PackageName, "version:", Version, Revision)
 		os.Exit(0)
 	}
 

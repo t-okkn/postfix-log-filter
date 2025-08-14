@@ -7,7 +7,7 @@ SRCS    := $(shell find . -type f -name '*.go')
 DSTDIR  := /usr/local/bin
 USER    := root
 GROUP   := root
-LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\" -extldflags \"-static\""
+LDFLAGS := -ldflags="-s -w -X \"main.PackageName=$(NAME)\" -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\" -extldflags \"-static\""
 
 GOVER     := $(shell go version | awk '{ print substr($$3, 3) }' | tr "." " ")
 VER_JUDGE := $(shell if [ $(word 1,$(GOVER)) -eq 1 ] && [ $(word 2,$(GOVER)) -le 10 ]; then echo 0; else echo 1; fi)
