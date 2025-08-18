@@ -83,11 +83,15 @@ func ParseLog(logdata io.Reader) ([]*LogMessages, error) {
 			}
 		}
 
-		if logMessage.Status == "" {
-			status, statusExists := msgContent.Params["status"]
+		status, statusExists := msgContent.Params["status"]
 
-			if statusExists {
+		if statusExists {
+			if logMessage.Status == "" {
 				logMessage.Status = status
+
+			} else {
+				// 既にStatusが設定されている場合は : で結合
+				logMessage.Status += ":" + status
 			}
 		}
 	}
